@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Weather Dashboard Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    /* Weather-themed Primary Colors */
+    --background: 210 100% 97%;
+    --foreground: 222 84% 5%;
+
+    /* Sky Blue Theme */
+    --primary: 210 100% 56%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 210 100% 85%;
+    --primary-dark: 210 100% 40%;
+
+    /* Weather Status Colors */
+    --sunny: 45 100% 60%;
+    --sunny-foreground: 0 0% 100%;
+    --cloudy: 220 13% 69%;
+    --cloudy-foreground: 0 0% 100%;
+    --rainy: 210 100% 56%;
+    --rainy-foreground: 0 0% 100%;
+    --stormy: 222 84% 15%;
+    --stormy-foreground: 0 0% 100%;
+
+    /* Card and Surface Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 5%;
+    --card-hover: 210 40% 98%;
+    
+    /* Glass Morphism Effect */
+    --glass: 0 0% 100% / 0.2;
+    --glass-border: 0 0% 100% / 0.1;
+
+    /* Temperature Colors */
+    --temp-hot: 15 100% 60%;
+    --temp-warm: 35 100% 55%;
+    --temp-mild: 120 40% 50%;
+    --temp-cool: 200 100% 60%;
+    --temp-cold: 240 100% 65%;
+
+    /* Secondary and Accent */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --accent: 210 100% 85%;
+    --accent-foreground: 210 100% 20%;
+
+    /* Utility Colors */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 210 100% 56%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Gradients */
+    --gradient-sky: linear-gradient(135deg, hsl(var(--primary-light)), hsl(var(--primary)));
+    --gradient-sunset: linear-gradient(135deg, hsl(var(--sunny)), hsl(var(--temp-warm)));
+    --gradient-storm: linear-gradient(135deg, hsl(var(--stormy)), hsl(var(--cloudy)));
+    --gradient-glass: linear-gradient(135deg, hsl(var(--glass)), hsl(var(--card)));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(var(--primary) / 0.1);
+    --shadow-medium: 0 8px 30px hsl(var(--primary) / 0.15);
+    --shadow-strong: 0 20px 60px hsl(var(--primary) / 0.2);
+
+    /* Animation Variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
+  }
+
+  .dark {
+    /* Dark Mode Weather Theme */
+    --background: 222 84% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 84% 8%;
+    --card-foreground: 210 40% 98%;
+    --card-hover: 222 84% 12%;
+
+    /* Dark Mode Weather Colors */
+    --primary: 210 100% 70%;
+    --primary-foreground: 222 84% 5%;
+    --primary-light: 210 100% 85%;
+    --primary-dark: 210 100% 55%;
+
+    --sunny: 45 100% 70%;
+    --cloudy: 220 13% 80%;
+    --rainy: 210 100% 70%;
+    --stormy: 222 84% 25%;
+
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 210 40% 98%;
+    --accent: 210 100% 75%;
+    --accent-foreground: 222 84% 5%;
+
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 210 100% 70%;
+
+    /* Dark Mode Glass Effect */
+    --glass: 0 0% 100% / 0.05;
+    --glass-border: 0 0% 100% / 0.1;
+
+    /* Dark Mode Gradients */
+    --gradient-sky: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--stormy)));
+    --gradient-sunset: linear-gradient(135deg, hsl(var(--sunny)), hsl(var(--temp-warm)));
+    --gradient-storm: linear-gradient(135deg, hsl(var(--stormy)), hsl(var(--background)));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+@layer components {
+  /* Weather Card Component */
+  .weather-card {
+    @apply bg-card/80 backdrop-blur-lg border border-white/20 rounded-2xl p-6 shadow-lg;
+    @apply hover:bg-card-hover/80 transition-all duration-300;
+    @apply hover:shadow-xl hover:scale-[1.02];
+  }
+
+  /* Glass Effect */
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+
+  /* Weather Background Gradients */
+  .bg-sky {
+    background: var(--gradient-sky);
+  }
+  
+  .bg-sunset {
+    background: var(--gradient-sunset);
+  }
+  
+  .bg-storm {
+    background: var(--gradient-storm);
+  }
+
+  /* Temperature Color Classes */
+  .temp-hot { @apply text-temp-hot; }
+  .temp-warm { @apply text-temp-warm; }
+  .temp-mild { @apply text-temp-mild; }
+  .temp-cool { @apply text-temp-cool; }
+  .temp-cold { @apply text-temp-cold; }
+
+  /* Animation Classes */
+  .animate-fade-in {
+    @apply animate-in fade-in duration-500;
+  }
+  
+  .animate-slide-up {
+    @apply animate-in slide-in-from-bottom-4 duration-500;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+}
